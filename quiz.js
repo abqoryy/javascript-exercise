@@ -64,7 +64,7 @@ function applyDiscount(products, discount) {
     }));
 }
 
-console.log(getProductsByCategory(sampleProducts, 'Electronics')); // Should return products with id 1 and 2
-console.log(calculateTotalPrice(sampleProducts)); // Should return 1830
-console.log(applyDiscount(sampleProducts, 10)); // Should return products with prices reduced by 10%
-console.log(findProductById(sampleProducts, 3)); // Should return the product with id 3
+console.log(getProductsByCategory(sampleProducts, 'Electronics'));
+console.log(calculateTotalPrice(sampleProducts)); 
+console.log(applyDiscount(sampleProducts, 10)); 
+console.log(findProductById(sampleProducts, 3));
