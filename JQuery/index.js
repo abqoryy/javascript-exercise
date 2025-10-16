@@ -74,3 +74,32 @@ $("h1").on("mouseover", function() {
         $("h1").removeClass("cyan");
     },500);
 });
+
+// prepend, append; using it for adding element inside another element
+// prepend will add element inside the selected element, before the existing content
+// append will add element inside the selected element, after the existing content
+// in this case, adding h3 inside h2, before and after the existing content
+
+$("button").on("click", function() {
+    $("h2").prepend("<h3>You Clicked it, this is PREPEND appear above!</h3>");
+    $("h2").append("<h3>You Clicked it, this is APPEND appear below!</h3>");
+
+    setTimeout(() => {
+        $("h3").remove();
+    },1000);
+});
+
+// before, after; using it for adding element outside another element
+// before will add element outside the selected element, before the existing content
+// after will add element outside the selected element, after the existing content
+// in this case, adding h3 outside h2, before and after the existing content
+
+$("button").on("click", function() {
+    // modern usage use BACKTICK in this case to closed the button tag, so the id can be use ""
+    $("h1").before(`<button id="before">You Clicked it, this is BEFORE appear above!</button>`);
+    $("h1").after(`<button id="after">You Clicked it, this is AFTER appear below!</button>`);
+
+    setTimeout(() => {
+        $("#before, #after").remove();
+    },1000);
+});
