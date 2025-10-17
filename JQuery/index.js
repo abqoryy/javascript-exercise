@@ -103,3 +103,39 @@ $("button").on("click", function() {
         $("#before, #after").remove();
     },1000);
 });
+
+// simple animation with jQuery
+$("#animation_header").addClass("big-title margin-50 padding-50");
+
+$("#animation1").on("click", function() {
+    $("#animation_header").slideUp().slideDown().animate({opacity: 0.5});
+    setTimeout(() => {
+        $("#animation_header").animate({opacity: 1});
+        $("#animation1").removeClass("button-clicked").html("Click to see animation");
+        $("#animation2").removeClass("button-clicked").html("Click to hide and show button");
+    },1000);
+});
+
+// slideUp, slideDown, slideToggle
+// other animation example: fadeIn, fadeOut, fadeToggle, fadeTo
+// animate({}) only works with numeric properties like width, height, opacity, margin, padding, etc.
+// non-numeric properties like color, background-color, font-size, etc. cannot be animated with animate({})
+// complete guide can be found at: https://api.jquery.com/animate/ 
+// or https://www.w3schools.com/jquery/jquery_animate.asp
+
+// $("#animation2").on("click", function() {
+//     $("#animation_header").hide();
+//     setTimeout(() => {
+//         $("#animation_header").show();
+//         $("#animation2").removeClass("button-clicked").html("Click to hide button");
+//     },1000);
+// });
+
+$("#animation2").on("click", function() {
+     $("#animation_header").toggle();
+     setTimeout(() => {
+        $("#animation1").removeClass("button-clicked").html("Click to see animation");
+        $("#animation2").removeClass("button-clicked").html("Click to hide and show button");
+     },1000);
+});
+   
