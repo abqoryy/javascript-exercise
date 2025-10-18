@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 2rem;
+}
+
+.btn-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.btn {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    border: 1px black solid;
+}
+
+.bg-green {
+    background-color: green;
+}
+.bg-red {
+    background-color: red;
+}
+.bg-yellow {
+    background-color: yellow;
+}
+.bg-blue {
+    background-color: blue;
+}
