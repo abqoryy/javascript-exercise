@@ -38,3 +38,9 @@ body {
 .bg-blue {
     background-color: blue;
 }
+
+.highlight {
+    opacity: 0.5;
+    box-shadow: 0 0 20px white;
+    animation: highlightAnim 0.5s;
+}
