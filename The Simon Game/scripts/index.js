@@ -26,33 +26,32 @@ $(".bg-blue").on("click", function() {
 });
 
 // make pattern
+
 let gamePattern = [];
+const buttonColors = ["green", "red", "yellow", "blue"];
+
+nextSequence();
+setTimeout(() => {
+    nextSequence();
+},1000);
+
+// button to answer the pattern
+// make pattern user to verify
+let userPattern = [];
+
+$(".btn").on("click", function() {
+   let userClick = $(".btn").attr("id");
+   userPattern.push(userClick); 
+})
 
 function nextSequence() {
-    let randomNumber = Math.floor(Math.random()* 4);
-    let buttonColors = ["green", "red", "yellow", "blue"];
+    let randomNumber = Math.floor(Math.random() * 4);
     let randomChosen = buttonColors[randomNumber];
     gamePattern.push(randomChosen);
 
-    $(".bg-" + randomChosen).addClass("highlight", function() {
-        if (randomChosen === "green") {
-            greenSounds.currentTime = 0;
-            greenSounds.play();
-        } else if (randomChosen === "red") {
-            redSounds.currentTime = 0
-            redSounds.play();    
-        } else if (randomChosen === "yellow") {
-            yellowSounds.currentTime = 0;
-            yellowSounds.play();
-        } else {
-            blueSounds.currentTime = 0;
-            blueSounds.play();
-        }
-    });
+    // flash animation
+    $("#" + randomChosen).addClass("highlight");
     setTimeout(() => {
-        $(".bg-" + randomChosen).removeClass("highlight");
+        $("#" + randomChosen).removeClass("highlight");
     },500);
 };
-// using switch to play sound based on color
-nextSequence();
-
