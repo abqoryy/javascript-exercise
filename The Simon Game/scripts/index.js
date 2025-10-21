@@ -30,28 +30,50 @@ $(".bg-blue").on("click", function() {
 let gamePattern = [];
 const buttonColors = ["green", "red", "yellow", "blue"];
 
-nextSequence();
-setTimeout(() => {
-    nextSequence();
-},1000);
-
-// button to answer the pattern
-// make pattern user to verify
 let userPattern = [];
+// need to group this so the code only runs when the game starts
+nextSequence();
 
+// button click to verify userPattern to gamePattern
 $(".btn").on("click", function() {
-   let userClick = $(".btn").attr("id");
-   userPattern.push(userClick); 
-})
+    let userClick = $(this).attr("id");
+    userPattern.push(userClick); 
+    console.log(userClick);
+
+    let currentIndex = userPattern.length - 1;
+    if (userPattern[currentIndex] === gamePattern[currentIndex]) {
+        console.log("success");
+    } else {
+        console.log("wrong");
+    }
+
+    if (userPattern.length === gamePattern.length) {
+        userPattern = [];
+        
+        setTimeout(() => {
+            nextSequence();
+        },1000);
+    };
+});
+
 
 function nextSequence() {
     let randomNumber = Math.floor(Math.random() * 4);
     let randomChosen = buttonColors[randomNumber];
     gamePattern.push(randomChosen);
 
-    // flash animation
-    $("#" + randomChosen).addClass("highlight");
-    setTimeout(() => {
-        $("#" + randomChosen).removeClass("highlight");
-    },500);
+    playSequence();
+
+};
+
+function playSequence() {
+    for (let i = 0; i < gamePattern.length && i < 5; i++) {
+        let color = gamePattern[i];
+        setTimeout(() => {       
+            $("#" + color).addClass("highlight");
+            setTimeout(() => {
+                $("#" + color).removeClass("highlight");
+            },500);
+        }, i * 1000);
+    }
 };
