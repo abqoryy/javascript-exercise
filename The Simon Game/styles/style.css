@@ -44,3 +44,7 @@ body {
     box-shadow: 0 0 20px white;
     animation: highlightAnim 0.5s;
 }
+
+.game-over {
+    background-color: darkred;
+};

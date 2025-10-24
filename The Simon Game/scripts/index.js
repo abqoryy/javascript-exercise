@@ -6,10 +6,11 @@ let userPattern = [];
 
 
 // adding sounds to variables
-const greenSounds = new Audio("sounds/green.mp3");
-const redSounds = new Audio("sounds/red.mp3");
-const yellowSounds = new Audio("sounds/yellow.mp3");
-const blueSounds = new Audio("sounds/blue.mp3");
+const greenSound = new Audio("sounds/green.mp3");
+const redSound = new Audio("sounds/red.mp3");
+const yellowSound = new Audio("sounds/yellow.mp3");
+const blueSound = new Audio("sounds/blue.mp3");
+const wrongSound = new Audio("sounds/wrong.mp3");
 
 // start the game by clicking h1
 $(".title h1").on("click", function() {
@@ -37,10 +38,22 @@ $(".btn").on("click", function() {
                 nextSequence();
             },1000);
         };
+
     } else {
         // debuggin if the patterns are not matched
-        // MAKE NEW CLASS FOR WRONG ANSWER IN CSS
         console.log("wrong");
+        $("body").addClass("game-over").on("click", function() {
+            wrongSound.currentTime = 0;
+            wrongSound.play();
+
+            setTimeout(() => {
+                $("body").removeClass("game-over");
+            },200);
+        });
+        // reset the game to level 1
+        $("h1").text("You Noob! Click Here to Restart");
+        // reset gamePatterns
+        gamePattern = [];
     };
 
 });
