@@ -36,7 +36,7 @@ $(".btn").on("click", function() {
         if (userPattern.length === gamePattern.length) {
             setTimeout(() => {
                 nextSequence();
-            },1000);
+            }, 1000);
         };
 
     } else {
@@ -48,7 +48,7 @@ $(".btn").on("click", function() {
 
             setTimeout(() => {
                 $("body").removeClass("game-over");
-            },200);
+            }, 200);
         });
         // reset the game to level 1
         $("h1").text("You Noob! Click Here to Restart");
@@ -58,4 +58,58 @@ $(".btn").on("click", function() {
 
 });
 
-// 
+// function to create new sequence to start the game and play the next sequence
+function nextSequence() {
+    //reset userPattern
+    userPattern = [];
+    //generate random number between 0 -3
+    let randomNumber = Math.floor(Math.random() * 4);
+    let randomChosen = buttonColors[randomNumber];
+    gamePattern.push(randomChosen);
+
+    playSequence();
+};
+
+// function to add new color and playing all the colors from gamePattern array 
+function playSequence() {
+    // i for index, this to add color one by one to increase the level
+    gamePattern.forEach((color, i) => {
+        setTimeout(() => {
+            // this will playing the sound based on the color in gamePattern
+            playSound(color);
+            // this will animate or flash the button color
+            animateButton(color);
+        }, i * 600);
+    });
+};
+
+// function to play sound based on the color, using switch case logic
+function playSound(color) {
+    switch(color) {
+        case "green":
+            greenSound.currentTime = 0;
+            greenSound.play();
+            break;
+        case "red":
+            redSound.currentTime = 0;
+            redSound.play();
+            break;
+        case "yellow":
+            yellowSound.currentTime = 0;
+            yellowSound.play();
+            break
+        case "blue":
+            blueSound,currentTime = 0;
+            blueSound.play();
+            break
+    };
+};
+
+
+// function to animate button, will add class and remove from the button
+function animateButton(color) {
+    $("#", + color).addClass("highlight");
+    setTimeout(() => {
+        $("#" + color).removeClass("highlight");
+    }, 300);
+};
